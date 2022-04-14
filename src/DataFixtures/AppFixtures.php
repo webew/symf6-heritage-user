@@ -2,9 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Medecin;
 use App\Entity\Patient;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
@@ -18,9 +19,9 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $patient = new Patient();
+        $patient = new Medecin();
         $patient->setEmail("toto@toto.fr");
-        $patient->setNom("toto");
+        $patient->setSpecialite("truc");
         $patient->setPassword($this->passwordEncoder->hashPassword($patient, "toto"));
 
         $manager->persist($patient);
